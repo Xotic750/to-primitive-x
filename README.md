@@ -48,7 +48,7 @@ were String.
 | Param | Type | Description |
 | --- | --- | --- |
 | input | <code>\*</code> | The input to convert. |
-| [prefferedtype] | <code>constructor</code> | The preffered type (String|Number). |
+| [prefferedtype] | <code>constructor</code> | The preffered type (String or Number). |
 
 **Example**  
 ```js

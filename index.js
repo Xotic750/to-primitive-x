@@ -17,8 +17,8 @@ var isSymbol = require('is-symbol');
 var requireObjectCoercible = require('require-object-coercible-x');
 var isNil = require('is-nil-x');
 var isUndefined = require('validate.io-undefined');
-var symToPrimitive = Symbol.toPrimitive;
-var symValueOf = Symbol.prototype.valueOf;
+var symToPrimitive = hasSymbols && Symbol.toPrimitive;
+var symValueOf = hasSymbols && Symbol.prototype.valueOf;
 
 var toStringOrder = ['toString', 'valueOf'];
 var toNumberOrder = ['valueOf', 'toString'];
@@ -109,7 +109,7 @@ var $toPrimitive = function toPrimitive(input, preferredType) {
  * were String.
  *
  * @param {*} input - The input to convert.
- * @param {constructor} [prefferedtype] - The preffered type (String|Number).
+ * @param {constructor} [prefferedtype] - The preffered type (String or Number).
  * @throws {TypeError} If unable to convert input to a primitive.
  * @returns {string|number} The converted input as a primitive.
  * @example

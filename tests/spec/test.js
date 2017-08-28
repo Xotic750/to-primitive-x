@@ -21,7 +21,7 @@ if (typeof module === 'object' && module.exports) {
   toPrimitive = returnExports;
 }
 
-var hasSymbols = typeof Symbol === 'function' && typeof Symbol.iterator === 'symbol';
+var hasSymbols = typeof Symbol === 'function' && typeof Symbol('') === 'symbol';
 var itHasSymbols = hasSymbols ? it : xit;
 
 var hasSymbolToPrimitive = hasSymbols && typeof Symbol.toPrimitive === 'symbol';
