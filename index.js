@@ -1,10 +1,10 @@
 /**
- * @file Boilerplate for standard modules.
- * @version 2.1.0
+ * @file Converts a JavaScript object to a primitive value.
+ * @version 1.0.0
  * @author Xotic750 <Xotic750@gmail.com>
  * @copyright  Xotic750
  * @license {@link <https://opensource.org/licenses/MIT> MIT}
- * @module module-boilerplate-x
+ * @module to-primitive-x
  */
 
 'use strict';
@@ -114,5 +114,10 @@ var $toPrimitive = function toPrimitive(input, preferredType) {
  * @returns {string|number} The converted input as a primitive.
  * @example
  * var toPrimitive = require('to-primitive-x');
+ *
+ * var date = new Date(0);
+ * toPrimitive(date)); // Thu Jan 01 1970 01:00:00 GMT+0100 (CET)
+ * toPrimitive(date, String)); // Thu Jan 01 1970 01:00:00 GMT+0100 (CET)
+ * toPrimitive(date, Number)); // 0
  */
 module.exports = $toPrimitive;

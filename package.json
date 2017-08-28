@@ -1,8 +1,8 @@
 {
-  "name": "to-primitive-xx",
+  "name": "to-primitive-x",
   "version": "1.0.0",
   "description": "Converts a JavaScript object to a primitive value.",
-  "homepage": "https://github.com/Xotic750/to-primitive-xx",
+  "homepage": "https://github.com/Xotic750/to-primitive-x",
   "author": {
     "name": "Graham Fairweather",
     "email": "xotic750@gmail.com"
@@ -22,10 +22,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Xotic750/to-primitive-xx.git"
+    "url": "https://github.com/Xotic750/to-primitive-x.git"
   },
   "bugs": {
-    "url": "https://github.com/Xotic750/to-primitive-xx/issues"
+    "url": "https://github.com/Xotic750/to-primitive-x/issues"
   },
   "dependencies": {
     "has-symbol-support-x": "^1.4.0",
@@ -84,8 +84,8 @@
     "lint-fix": "npm run lint -- --fix",
     "security": "nsp check",
     "test": "jasmine-node --matchall tests/spec/",
-    "browserify": "browserify -p browserify-derequire -e index.js -o lib/to-primitive-xx.js -u 'crypto' -s returnExports",
-    "uglify": "uglifyjs lib/to-primitive-xx.js -o lib/to-primitive-xx.min.js --config-file .uglifyjsrc.json",
+    "browserify": "browserify -p browserify-derequire -e index.js -o lib/to-primitive-x.js -u 'crypto' -s returnExports",
+    "uglify": "uglifyjs lib/to-primitive-x.js -o lib/to-primitive-x.min.js --config-file .uglifyjsrc.json",
     "precommit": "npm run production",
     "prepush": "npm run production"
   }
