@@ -107,9 +107,9 @@ describe('toPrimitive', function () {
       expect(toPrimitive(i, Number)).toBe(i);
     });
 
-    expect(isNaN(toPrimitive(NaN))).toBe(true);
-    expect(isNaN(toPrimitive(NaN, String))).toBe(true);
-    expect(isNaN(toPrimitive(NaN, Number))).toBe(true);
+    expect(Number.isNaN(toPrimitive(NaN))).toBe(true);
+    expect(Number.isNaN(toPrimitive(NaN, String))).toBe(true);
+    expect(Number.isNaN(toPrimitive(NaN, Number))).toBe(true);
 
   });
 
@@ -158,7 +158,7 @@ describe('toPrimitive', function () {
     var date = new Date(NaN);
     expect(toPrimitive(date)).toBe(String(date));
     expect(toPrimitive(date, String)).toBe(String(date));
-    expect(isNaN(toPrimitive(date, Number))).toBe(true);
+    expect(Number.isNaN(toPrimitive(date, Number))).toBe(true);
   });
 
   it('Objects', function () {

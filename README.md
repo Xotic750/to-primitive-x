@@ -23,13 +23,13 @@
 ## to-primitive-x
 Converts a JavaScript object to a primitive value.
 
-**Version**: 1.0.0  
+**Version**: 1.0.1  
 **Author**: Xotic750 <Xotic750@gmail.com>  
 **License**: [MIT](&lt;https://opensource.org/licenses/MIT&gt;)  
 **Copyright**: Xotic750  
 <a name="exp_module_to-primitive-x--module.exports"></a>
 
-### `module.exports` ⇒ <code>string</code> \| <code>number</code> ⏏
+### `module.exports(input, [prefferedtype])` ⇒ <code>string</code> \| <code>number</code> ⏏
 This method converts a JavaScript object to a primitive value.
 Note: When toPrimitive is called with no hint, then it generally behaves as
 if the hint were Number. However, objects may over-ride this behaviour by
@@ -38,7 +38,7 @@ only Date objects (see 20.3.4.45) and Symbol objects (see 19.4.3.4) over-ride
 the default ToPrimitive behaviour. Date objects treat no hint as if the hint
 were String.
 
-**Kind**: Exported member  
+**Kind**: Exported function  
 **Returns**: <code>string</code> \| <code>number</code> - The converted input as a primitive.  
 **Throws**:
 
