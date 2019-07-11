@@ -1,13 +1,13 @@
 /*!
 {
   "copywrite": "Copyright (c) 2017",
-  "date": "2019-07-11T09:24:39.883Z",
+  "date": "2019-07-11T10:05:20.251Z",
   "describe": "",
   "description": "Converts a JavaScript object to a primitive value.",
   "file": "to-primitive-x.js",
-  "hash": "167a3169600e081b6996",
+  "hash": "592162474ab861c0eb07",
   "license": "MIT",
-  "version": "2.0.0"
+  "version": "2.0.1"
 }
 */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -172,7 +172,7 @@ var _isFunctionX = _interopRequireDefault(__webpack_require__(8));
 
 var _requireObjectCoercibleX = _interopRequireDefault(__webpack_require__(9));
 
-var _isNilX = _interopRequireDefault(__webpack_require__(13));
+var _isNilX = _interopRequireDefault(__webpack_require__(10));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -860,172 +860,37 @@ module.exports = function hasSymbols() {
 /* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-/**
- * @file ES6-compliant shim for RequireObjectCoercible.
- * @see {@link http://www.ecma-international.org/ecma-262/6.0/#sec-requireobjectcoercible|7.2.1 RequireObjectCoercible ( argument )}
- * @version 1.4.3
- * @author Xotic750 <Xotic750@gmail.com>
- * @copyright  Xotic750
- * @license {@link <https://opensource.org/licenses/MIT> MIT}
- * @module require-object-coercible-x
- */
-
-
-
-var isNil = __webpack_require__(10);
-
-/**
- * The abstract operation RequireObjectCoercible throws an error if argument
- * is a value that cannot be converted to an Object using ToObject.
- *
- * @param {*} value - The `value` to check.
- * @throws {TypeError} If `value` is a `null` or `undefined`.
- * @returns {string} The `value`.
- * @example
- * var RequireObjectCoercible = require('require-object-coercible-x');
- *
- * RequireObjectCoercible(); // TypeError
- * RequireObjectCoercible(null); // TypeError
- * RequireObjectCoercible('abc'); // 'abc'
- * RequireObjectCoercible(true); // true
- * RequireObjectCoercible(Symbol('foo')); // Symbol('foo')
- */
-module.exports = function RequireObjectCoercible(value) {
-  if (isNil(value)) {
-    throw new TypeError('Cannot call method on ' + value);
-  }
-
-  return value;
-};
-
+/* WEBPACK VAR INJECTION */(function(global) {/*!
+{
+  "copywrite": "Copyright (c) 2015-present",
+  "date": "2019-07-10T19:41:32.687Z",
+  "describe": "",
+  "description": "ES6-compliant shim for RequireObjectCoercible.",
+  "file": "require-object-coercible-x.min.js",
+  "hash": "e0a246211b3fc1c03415",
+  "license": "MIT",
+  "version": "2.0.0"
+}
+*/
+!function(e,t){ true?module.exports=t():undefined}(function(){"use strict";return"undefined"!=typeof self?self:"undefined"!=typeof window?window:"undefined"!=typeof global?global:Function("return this")()}(),function(){return function(e){var t={};function n(r){if(t[r])return t[r].exports;var o=t[r]={i:r,l:!1,exports:{}};return e[r].call(o.exports,o,o.exports,n),o.l=!0,o.exports}return n.m=e,n.c=t,n.d=function(e,t,r){n.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},n.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(n.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var o in e)n.d(r,o,function(t){return e[t]}.bind(null,o));return r},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="",n(n.s=0)}([function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.default=function(e){if((0,o.default)(e))throw new TypeError("Cannot call method on ".concat(e));return e};var r,o=(r=n(1))&&r.__esModule?r:{default:r}},function(e,t,n){(function(t){
+/*!
+{
+  "copywrite": "Copyright (c) 2015-present",
+  "date": "2019-07-10T12:31:27.126Z",
+  "describe": "",
+  "description": "Checks if `value` is `null` or `undefined`.",
+  "file": "is-nil-x.min.js",
+  "hash": "e4915937853cc4a715ce",
+  "license": "MIT",
+  "version": "2.0.0"
+}
+*/
+(function(){"use strict";"undefined"!=typeof self?self:"undefined"!=typeof window?window:void 0!==t||Function("return this")()})(),e.exports=function(e){var t={};function n(r){if(t[r])return t[r].exports;var o=t[r]={i:r,l:!1,exports:{}};return e[r].call(o.exports,o,o.exports,n),o.l=!0,o.exports}return n.m=e,n.c=t,n.d=function(e,t,r){n.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},n.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(n.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var o in e)n.d(r,o,function(t){return e[t]}.bind(null,o));return r},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="",n(n.s=0)}([function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.default=function(e){return null==e}}])}).call(this,n(2))},function(e,t){var n;n=function(){return this}();try{n=n||new Function("return this")()}catch(e){"object"==typeof window&&(n=window)}e.exports=n}])});
+//# sourceMappingURL=require-object-coercible-x.min.js.map
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(0)))
 
 /***/ }),
 /* 10 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/**
- * @file Checks if `value` is `null` or `undefined`.
- * @version 1.4.2
- * @author Xotic750 <Xotic750@gmail.com>
- * @copyright  Xotic750
- * @license {@link <https://opensource.org/licenses/MIT> MIT}
- * @module is-nil-x
- */
-
-
-
-var isUndefined = __webpack_require__(11);
-var isNull = __webpack_require__(12);
-
-/**
- * Checks if `value` is `null` or `undefined`.
- *
- * @param {*} value - The value to check.
- * @returns {boolean} Returns `true` if `value` is nullish, else `false`.
- * @example
- * var isNil = require('is-nil-x');
- *
- * isNil(null); // => true
- * isNil(void 0); // => true
- * isNil(NaN); // => false
- */
-module.exports = function isNil(value) {
-  return isNull(value) || isUndefined(value);
-};
-
-
-/***/ }),
-/* 11 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/**
-*
-*	VALIDATE: undefined
-*
-*
-*	DESCRIPTION:
-*		- Validates if a value is undefined.
-*
-*
-*	NOTES:
-*		[1]
-*
-*
-*	TODO:
-*		[1]
-*
-*
-*	LICENSE:
-*		MIT
-*
-*	Copyright (c) 2014. Athan Reines.
-*
-*
-*	AUTHOR:
-*		Athan Reines. kgryte@gmail.com. 2014.
-*
-*/
-
-
-
-/**
-* FUNCTION: isUndefined( value )
-*	Validates if a value is undefined.
-*
-* @param {*} value - value to be validated
-* @returns {Boolean} boolean indicating whether value is undefined
-*/
-function isUndefined( value ) {
-	return value === void 0;
-} // end FUNCTION isUndefined()
-
-
-// EXPORTS //
-
-module.exports = isUndefined;
-
-
-/***/ }),
-/* 12 */
-/***/ (function(module, exports) {
-
-/**
- * lodash 3.0.0 (Custom Build) <https://lodash.com/>
- * Build: `lodash modern modularize exports="npm" -o ./`
- * Copyright 2012-2015 The Dojo Foundation <http://dojofoundation.org/>
- * Based on Underscore.js 1.7.0 <http://underscorejs.org/LICENSE>
- * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
- * Available under MIT license <https://lodash.com/license>
- */
-
-/**
- * Checks if `value` is `null`.
- *
- * @static
- * @memberOf _
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is `null`, else `false`.
- * @example
- *
- * _.isNull(null);
- * // => true
- *
- * _.isNull(void 0);
- * // => false
- */
-function isNull(value) {
-  return value === null;
-}
-
-module.exports = isNull;
-
-
-/***/ }),
-/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {/*!
