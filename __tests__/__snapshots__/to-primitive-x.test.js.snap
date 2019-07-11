@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`toPrimitive Symbol.toPrimitive exceptions 1`] = `"Cannot convert a Symbol value to a string"`;
+
+exports[`toPrimitive Symbol.toPrimitive exceptions 2`] = `"unable to convert exotic object to primitive"`;
+
+exports[`toPrimitive Symbol.toPrimitive exceptions 3`] = `"default"`;
+
+exports[`toPrimitive exceptions 1`] = `"No default value"`;
+
+exports[`toPrimitive exceptions 2`] = `"No default value"`;
+
+exports[`toPrimitive exceptions 3`] = `"No default value"`;
+
+exports[`toPrimitive exceptions 4`] = `"No default value"`;
+
+exports[`toPrimitive exceptions 5`] = `"No default value"`;
+
+exports[`toPrimitive exceptions 6`] = `"No default value"`;

@@ -21,15 +21,13 @@
 <a name="module_to-primitive-x"></a>
 
 ## to-primitive-x
+
 Converts a JavaScript object to a primitive value.
 
-**Version**: 1.1.0  
-**Author**: Xotic750 <Xotic750@gmail.com>  
-**License**: [MIT](&lt;https://opensource.org/licenses/MIT&gt;)  
-**Copyright**: Xotic750  
 <a name="exp_module_to-primitive-x--module.exports"></a>
 
 ### `module.exports(input, [prefferedtype])` ⇒ <code>string</code> \| <code>number</code> ⏏
+
 This method converts a JavaScript object to a primitive value.
 Note: When toPrimitive is called with no hint, then it generally behaves as
 if the hint were Number. However, objects may over-ride this behaviour by
@@ -44,18 +42,18 @@ were String.
 
 - <code>TypeError</code> If unable to convert input to a primitive.
 
-
-| Param | Type | Description |
-| --- | --- | --- |
-| input | <code>\*</code> | The input to convert. |
+| Param           | Type                     | Description                            |
+| --------------- | ------------------------ | -------------------------------------- |
+| input           | <code>\*</code>          | The input to convert.                  |
 | [prefferedtype] | <code>constructor</code> | The preffered type (String or Number). |
 
-**Example**  
-```js
-var toPrimitive = require('to-primitive-x');
+**Example**
 
-var date = new Date(0);
-toPrimitive(date)); // Thu Jan 01 1970 01:00:00 GMT+0100 (CET)
-toPrimitive(date, String)); // Thu Jan 01 1970 01:00:00 GMT+0100 (CET)
-toPrimitive(date, Number)); // 0
+```js
+import toPrimitive from 'to-primitive-x';
+
+const date = new Date(0);
+console.log(toPrimitive(date)); // Thu Jan 01 1970 01:00:00 GMT+0100 (CET)
+console.log(toPrimitive(date, String)); // Thu Jan 01 1970 01:00:00 GMT+0100 (CET)
+console.log(toPrimitive(date, Number)); // 0
 ```
