@@ -5,43 +5,47 @@ import isSymbol from 'is-symbol';
 import isFunction from 'is-function-x';
 import requireObjectCoercible from 'require-object-coercible-x';
 import isNil from 'is-nil-x';
-
-const ZERO = 0;
-const ONE = 1;
+var ZERO = 0;
+var ONE = 1;
 /* eslint-disable-next-line no-void */
-const UNDEFINED = void ZERO;
-const NUMBER = 'number';
-const STRING = 'string';
-const DEFAULT = 'default';
+
+var UNDEFINED = void ZERO;
+var NUMBER = 'number';
+var STRING = 'string';
+var DEFAULT = 'default';
 /** @type {StringConstructor} */
-const StringCtr = STRING.constructor;
+
+var StringCtr = STRING.constructor;
 /** @type {NumberConstructor} */
-const NumberCtr = ZERO.constructor;
-/* eslint-disable-next-line compat/compat */
-const symToPrimitive = hasSymbols && Symbol.toPrimitive;
-/* eslint-disable-next-line compat/compat */
-const symValueOf = hasSymbols && Symbol.prototype.valueOf;
 
-const toStringOrder = ['toString', 'valueOf'];
-const toNumberOrder = ['valueOf', 'toString'];
-const orderLength = 2;
+var NumberCtr = ZERO.constructor;
+/* eslint-disable-next-line compat/compat */
 
+var symToPrimitive = hasSymbols && Symbol.toPrimitive;
+/* eslint-disable-next-line compat/compat */
+
+var symValueOf = hasSymbols && Symbol.prototype.valueOf;
+var toStringOrder = ['toString', 'valueOf'];
+var toNumberOrder = ['valueOf', 'toString'];
+var orderLength = 2;
 /**
  * @param {*} ordinary - The ordinary to convert.
  * @param {*} hint - The hint.
  * @returns {*} - The primitive.
  */
-const ordinaryToPrimitive = function _ordinaryToPrimitive(ordinary, hint) {
+
+var ordinaryToPrimitive = function _ordinaryToPrimitive(ordinary, hint) {
   requireObjectCoercible(ordinary);
 
-  if (typeof hint !== 'string' || (hint !== NUMBER && hint !== STRING)) {
+  if (typeof hint !== 'string' || hint !== NUMBER && hint !== STRING) {
     throw new TypeError('hint must be "string" or "number"');
   }
 
-  const methodNames = hint === STRING ? toStringOrder : toNumberOrder;
-  let method;
-  let result;
-  for (let i = ZERO; i < orderLength; i += ONE) {
+  var methodNames = hint === STRING ? toStringOrder : toNumberOrder;
+  var method;
+  var result;
+
+  for (var i = ZERO; i < orderLength; i += ONE) {
     method = ordinary[methodNames[i]];
 
     if (isFunction(method)) {
@@ -55,18 +59,19 @@ const ordinaryToPrimitive = function _ordinaryToPrimitive(ordinary, hint) {
 
   throw new TypeError('No default value');
 };
-
 /**
  * @param {*} object - The object.
  * @param {*} property - The property.
  * @returns {undefined|Function} - The method.
  */
-const getMethod = function _getMethod(object, property) {
-  const func = object[property];
+
+
+var getMethod = function _getMethod(object, property) {
+  var func = object[property];
 
   if (isNil(func) === false) {
     if (isFunction(func) === false) {
-      throw new TypeError(`${func} returned for property ${property} of object ${object} is not a function`);
+      throw new TypeError("".concat(func, " returned for property ").concat(property, " of object ").concat(object, " is not a function"));
     }
 
     return func;
@@ -74,7 +79,6 @@ const getMethod = function _getMethod(object, property) {
 
   return UNDEFINED;
 };
-
 /**
  * Get the hint.
  *
@@ -82,7 +86,9 @@ const getMethod = function _getMethod(object, property) {
  * @param {boolean} supplied - Was a value supplied.
  * @returns {string} - The hint string.
  */
-const getHint = function getHint(value, supplied) {
+
+
+var getHint = function getHint(value, supplied) {
   if (supplied) {
     if (value === StringCtr) {
       return STRING;
@@ -95,14 +101,15 @@ const getHint = function getHint(value, supplied) {
 
   return DEFAULT;
 };
-
 /**
  * Get the primitive from the exotic.
  *
  * @param {*} value - The exotic.
  * @returns {*} - The primitive.
  */
-const getExoticToPrim = function getExoticToPrim(value) {
+
+
+var getExoticToPrim = function getExoticToPrim(value) {
   if (hasSymbols) {
     if (symToPrimitive) {
       return getMethod(value, symToPrimitive);
@@ -115,7 +122,6 @@ const getExoticToPrim = function getExoticToPrim(value) {
 
   return UNDEFINED;
 };
-
 /**
  * This method converts a JavaScript object to a primitive value.
  * Note: When toPrimitive is called with no hint, then it generally behaves as
@@ -131,16 +137,18 @@ const getExoticToPrim = function getExoticToPrim(value) {
  * @returns {string|number} The converted input as a primitive.
  * @see {http://www.ecma-international.org/ecma-262/6.0/#sec-toprimitive}
  */
+
+
 export default function toPrimitive(input, preferredType) {
   if (isPrimitive(input)) {
     return input;
   }
 
-  const hint = getHint(preferredType, arguments.length > ONE);
-  const exoticToPrim = getExoticToPrim(input);
+  var hint = getHint(preferredType, arguments.length > ONE);
+  var exoticToPrim = getExoticToPrim(input);
 
   if (typeof exoticToPrim !== 'undefined') {
-    const result = exoticToPrim.call(input, hint);
+    var result = exoticToPrim.call(input, hint);
 
     if (isPrimitive(result)) {
       return result;
@@ -149,7 +157,8 @@ export default function toPrimitive(input, preferredType) {
     throw new TypeError('unable to convert exotic object to primitive');
   }
 
-  const newHint = hint === DEFAULT && (isDate(input) || isSymbol(input)) ? STRING : hint;
-
+  var newHint = hint === DEFAULT && (isDate(input) || isSymbol(input)) ? STRING : hint;
   return ordinaryToPrimitive(input, newHint === DEFAULT ? NUMBER : newHint);
 }
+
+//# sourceMappingURL=to-primitive-x.esm.js.map
