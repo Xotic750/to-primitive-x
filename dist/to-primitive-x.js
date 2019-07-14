@@ -2,13 +2,13 @@
 {
   "author": "Graham Fairweather",
   "copywrite": "Copyright (c) 2017",
-  "date": "2019-07-13T23:40:51.439Z",
+  "date": "2019-07-14T21:48:00.028Z",
   "describe": "",
   "description": "Converts a JavaScript object to a primitive value.",
   "file": "to-primitive-x.js",
-  "hash": "c356ea372dc583f66e97",
+  "hash": "f40d17b2a300e5481bb2",
   "license": "MIT",
-  "version": "2.0.4"
+  "version": "2.0.5"
 }
 */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -346,7 +346,6 @@ function attempt(fn) {
     };
   }
 }
-;
 
 
 // EXTERNAL MODULE: ./node_modules/is-symbol/index.js
