@@ -1,10 +1,8 @@
 import toPrimitive from 'src/to-primitive-x';
 
-/* eslint-disable-next-line compat/compat */
 const hasSymbols = typeof Symbol === 'function' && typeof Symbol('') === 'symbol';
 const itHasSymbols = hasSymbols ? it : xit;
 
-/* eslint-disable-next-line compat/compat */
 const hasSymbolToPrimitive = hasSymbols && typeof Symbol.toPrimitive === 'symbol';
 const itHasSymbolToPrimitive = hasSymbolToPrimitive ? it : xit;
 
@@ -42,7 +40,6 @@ const coercibleFnObject = {
     return 42;
   },
   valueOf() {
-    /* eslint-disable-next-line lodash/prefer-noop */
     return function valueOfFn() {};
   },
 };
@@ -58,11 +55,9 @@ const uncoercibleObject = {
 
 const uncoercibleFnObject = {
   toString() {
-    /* eslint-disable-next-line lodash/prefer-noop */
     return function toStrFn() {};
   },
   valueOf() {
-    /* eslint-disable-next-line lodash/prefer-noop */
     return function valueOfFn() {};
   },
 };
@@ -81,24 +76,16 @@ describe('toPrimitive', function() {
       expect(toPrimitive(i, Number)).toBe(i);
     });
 
-    /* eslint-disable-next-line compat/compat */
     expect(Number.isNaN(toPrimitive(NaN))).toBe(true);
-    /* eslint-disable-next-line compat/compat */
+
     expect(Number.isNaN(toPrimitive(NaN, String))).toBe(true);
-    /* eslint-disable-next-line compat/compat */
+
     expect(Number.isNaN(toPrimitive(NaN, Number))).toBe(true);
   });
 
   itHasSymbols('Symbols', function() {
     expect.assertions(12);
-    const symbols = [
-      /* eslint-disable-next-line compat/compat */
-      Symbol('foo'),
-      /* eslint-disable-next-line compat/compat */
-      Symbol.iterator,
-      /* eslint-disable-next-line compat/compat */
-      Symbol.for('foo'),
-    ];
+    const symbols = [Symbol('foo'), Symbol.iterator, Symbol.for('foo')];
 
     symbols.forEach(function(sym) {
       expect(toPrimitive(sym)).toBe(sym);
@@ -106,7 +93,6 @@ describe('toPrimitive', function() {
       expect(toPrimitive(sym, Number)).toBe(sym);
     });
 
-    /* eslint-disable-next-line compat/compat */
     const primitiveSym = Symbol('primitiveSym');
     const objectSym = Object(primitiveSym);
     expect(toPrimitive(objectSym)).toBe(primitiveSym);
@@ -136,7 +122,7 @@ describe('toPrimitive', function() {
     const date = new Date(NaN);
     expect(toPrimitive(date)).toBe(String(date));
     expect(toPrimitive(date, String)).toBe(String(date));
-    /* eslint-disable-next-line compat/compat */
+
     expect(Number.isNaN(toPrimitive(date, Number))).toBe(true);
   });
 
@@ -174,7 +160,6 @@ describe('toPrimitive', function() {
       },
     };
 
-    /* eslint-disable-next-line compat/compat */
     overriddenObject[Symbol.toPrimitive] = function(hint) {
       return String(hint);
     };
@@ -194,7 +179,6 @@ describe('toPrimitive', function() {
       valueOf: coercibleObject.valueOf,
     };
 
-    /* eslint-disable-next-line compat/compat */
     nullToPrimitive[Symbol.toPrimitive] = null;
     expect(toPrimitive(nullToPrimitive)).toBe(toPrimitive(coercibleObject));
     expect(toPrimitive(nullToPrimitive, Number)).toBe(toPrimitive(coercibleObject, Number));
@@ -212,7 +196,6 @@ describe('toPrimitive', function() {
       },
     };
 
-    /* eslint-disable-next-line compat/compat */
     nonFunctionToPrimitive[Symbol.toPrimitive] = {};
     expect(function() {
       toPrimitive(nonFunctionToPrimitive);
@@ -227,7 +210,6 @@ describe('toPrimitive', function() {
       },
     };
 
-    /* eslint-disable-next-line compat/compat */
     uncoercibleToPrimitive[Symbol.toPrimitive] = function(hint) {
       return {
         toString() {
@@ -249,7 +231,6 @@ describe('toPrimitive', function() {
       },
     };
 
-    /* eslint-disable-next-line compat/compat */
     throwingToPrimitive[Symbol.toPrimitive] = function(hint) {
       throw new RangeError(hint);
     };
