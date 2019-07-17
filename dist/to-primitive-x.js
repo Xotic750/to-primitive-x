@@ -2,13 +2,13 @@
 {
   "author": "Graham Fairweather",
   "copywrite": "Copyright (c) 2017",
-  "date": "2019-07-17T16:04:12.193Z",
+  "date": "2019-07-17T17:25:34.056Z",
   "describe": "",
   "description": "Converts a JavaScript object to a primitive value.",
   "file": "to-primitive-x.js",
-  "hash": "444684ac8f1cad8ef67f",
+  "hash": "442e4c7dd5696719c31b",
   "license": "MIT",
-  "version": "2.0.11"
+  "version": "2.0.12"
 }
 */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -327,7 +327,7 @@ __webpack_require__.r(__webpack_exports__);
  * @param {...*} [args] - The arguments to invoke the function with.
  * @returns {object} Returns an object of the result.
  */
-function attempt(fn) {
+var attempt = function attempt(fn) {
   try {
     for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
       args[_key - 1] = arguments[_key];
@@ -345,7 +345,9 @@ function attempt(fn) {
       value: e
     };
   }
-}
+};
+
+/* harmony default export */ var attempt_x_esm = (attempt);
 
 
 // EXTERNAL MODULE: ./node_modules/is-symbol/index.js
@@ -359,7 +361,7 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
 
 
 
-var hasSymbolSupport = attempt(function () {
+var hasSymbolSupport = attempt_x_esm(function () {
   _newArrowCheck(this, _this);
 
   /* eslint-disable-next-line compat/compat */
@@ -382,39 +384,6 @@ var is_primitive_default = /*#__PURE__*/__webpack_require__.n(is_primitive);
 // EXTERNAL MODULE: ./node_modules/is-date-object/index.js
 var is_date_object = __webpack_require__(2);
 var is_date_object_default = /*#__PURE__*/__webpack_require__.n(is_date_object);
-
-// CONCATENATED MODULE: ./node_modules/is-function-x/node_modules/attempt-x/dist/attempt-x.esm.js
-/**
- * This method attempts to invoke the function, returning either the result or
- * the caught error object. Any additional arguments are provided to the
- * function when it's invoked.
- *
- * @param {Function} [fn] - The function to attempt.
- * @param {...*} [args] - The arguments to invoke the function with.
- * @returns {object} Returns an object of the result.
- */
-var attempt_x_esm_attempt = function attempt(fn) {
-  try {
-    for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-      args[_key - 1] = arguments[_key];
-    }
-
-    return {
-      threw: false,
-
-      /* eslint-disable-next-line babel/no-invalid-this */
-      value: fn.apply(this, args)
-    };
-  } catch (e) {
-    return {
-      threw: true,
-      value: e
-    };
-  }
-};
-
-/* harmony default export */ var attempt_x_esm = (attempt_x_esm_attempt);
-
 
 // CONCATENATED MODULE: ./node_modules/to-boolean-x/dist/to-boolean-x.esm.js
 /**
