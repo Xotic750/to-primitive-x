@@ -139,7 +139,7 @@ var getExoticToPrim = function getExoticToPrim(value) {
  */
 
 
-export default function toPrimitive(input, preferredType) {
+var toPrimitive = function toPrimitive(input, preferredType) {
   if (isPrimitive(input)) {
     return input;
   }
@@ -159,6 +159,8 @@ export default function toPrimitive(input, preferredType) {
 
   var newHint = hint === DEFAULT && (isDate(input) || isSymbol(input)) ? STRING : hint;
   return ordinaryToPrimitive(input, newHint === DEFAULT ? NUMBER : newHint);
-}
+};
+
+export default toPrimitive;
 
 //# sourceMappingURL=to-primitive-x.esm.js.map

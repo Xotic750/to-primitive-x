@@ -131,7 +131,7 @@ const getExoticToPrim = function getExoticToPrim(value) {
  * @returns {string|number} The converted input as a primitive.
  * @see {http://www.ecma-international.org/ecma-262/6.0/#sec-toprimitive}
  */
-export default function toPrimitive(input, preferredType) {
+const toPrimitive = function toPrimitive(input, preferredType) {
   if (isPrimitive(input)) {
     return input;
   }
@@ -152,4 +152,6 @@ export default function toPrimitive(input, preferredType) {
   const newHint = hint === DEFAULT && (isDate(input) || isSymbol(input)) ? STRING : hint;
 
   return ordinaryToPrimitive(input, newHint === DEFAULT ? NUMBER : newHint);
-}
+};
+
+export default toPrimitive;
