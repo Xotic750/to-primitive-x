@@ -2,13 +2,13 @@
 {
   "author": "Graham Fairweather",
   "copywrite": "Copyright (c) 2017",
-  "date": "2019-07-18T18:31:44.366Z",
+  "date": "2019-07-19T21:40:38.797Z",
   "describe": "",
   "description": "Converts a JavaScript object to a primitive value.",
   "file": "to-primitive-x.js",
   "hash": "442e4c7dd5696719c31b",
   "license": "MIT",
-  "version": "2.0.16"
+  "version": "2.0.17"
 }
 */
 (function webpackUniversalModuleDefinition(root, factory) {
