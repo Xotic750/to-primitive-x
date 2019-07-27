@@ -2,11 +2,11 @@
 {
   "author": "Graham Fairweather",
   "copywrite": "Copyright (c) 2017",
-  "date": "2019-07-27T13:36:22.941Z",
+  "date": "2019-07-27T20:14:39.997Z",
   "describe": "",
   "description": "Converts a JavaScript object to a primitive value.",
   "file": "to-primitive-x.js",
-  "hash": "f0f84e02d00ef3ef4621",
+  "hash": "7aae5bebe43e02255696",
   "license": "MIT",
   "version": "2.0.26"
 }
@@ -1039,11 +1039,7 @@ var UNDEFINED = void ZERO;
 var NUMBER = 'number';
 var STRING = 'string';
 var DEFAULT = 'default';
-/** @type {StringConstructor} */
-
 var StringCtr = STRING.constructor;
-/** @type {NumberConstructor} */
-
 var NumberCtr = ZERO.constructor;
 /* eslint-disable-next-line compat/compat */
 

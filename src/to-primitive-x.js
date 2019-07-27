@@ -13,9 +13,7 @@ const UNDEFINED = void ZERO;
 const NUMBER = 'number';
 const STRING = 'string';
 const DEFAULT = 'default';
-/** @type {StringConstructor} */
 const StringCtr = STRING.constructor;
-/** @type {NumberConstructor} */
 const NumberCtr = ZERO.constructor;
 /* eslint-disable-next-line compat/compat */
 const symToPrimitive = hasSymbols && Symbol.toPrimitive;

@@ -13,11 +13,7 @@ var UNDEFINED = void ZERO;
 var NUMBER = 'number';
 var STRING = 'string';
 var DEFAULT = 'default';
-/** @type {StringConstructor} */
-
 var StringCtr = STRING.constructor;
-/** @type {NumberConstructor} */
-
 var NumberCtr = ZERO.constructor;
 /* eslint-disable-next-line compat/compat */
 
