@@ -54,6 +54,7 @@ module.exports = {
         definedTypes: ['Readonly', 'ReadonlyArray'],
       },
     ],
+    complexity: ['error', 5],
   },
 
   /**

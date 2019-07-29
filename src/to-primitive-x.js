@@ -24,17 +24,22 @@ const toStringOrder = ['toString', 'valueOf'];
 const toNumberOrder = ['valueOf', 'toString'];
 const orderLength = 2;
 
+const assertHint = function assertHint(hint) {
+  if (typeof hint !== 'string' || (hint !== NUMBER && hint !== STRING)) {
+    throw new TypeError('hint must be "string" or "number"');
+  }
+
+  return hint;
+};
+
 /**
  * @param {*} ordinary - The ordinary to convert.
  * @param {*} hint - The hint.
  * @returns {*} - The primitive.
  */
-const ordinaryToPrimitive = function _ordinaryToPrimitive(ordinary, hint) {
+const ordinaryToPrimitive = function ordinaryToPrimitive(ordinary, hint) {
   requireObjectCoercible(ordinary);
-
-  if (typeof hint !== 'string' || (hint !== NUMBER && hint !== STRING)) {
-    throw new TypeError('hint must be "string" or "number"');
-  }
+  assertHint(hint);
 
   const methodNames = hint === STRING ? toStringOrder : toNumberOrder;
   let method;
@@ -59,7 +64,7 @@ const ordinaryToPrimitive = function _ordinaryToPrimitive(ordinary, hint) {
  * @param {*} property - The property.
  * @returns {undefined|Function} - The method.
  */
-const getMethod = function _getMethod(object, property) {
+const getMethod = function getMethod(object, property) {
   const func = object[property];
 
   if (isNil(func) === false) {
@@ -114,6 +119,23 @@ const getExoticToPrim = function getExoticToPrim(value) {
   return UNDEFINED;
 };
 
+const evalExotic = function evalExotic(obj) {
+  const {exoticToPrim, input, hint} = obj;
+  const result = exoticToPrim.call(input, hint);
+
+  if (isPrimitive(result)) {
+    return result;
+  }
+
+  throw new TypeError('unable to convert exotic object to primitive');
+};
+
+const evalPrimitive = function evalPrimitive(input, hint) {
+  const newHint = hint === DEFAULT && (isDate(input) || isSymbol(input)) ? STRING : hint;
+
+  return ordinaryToPrimitive(input, newHint === DEFAULT ? NUMBER : newHint);
+};
+
 /**
  * This method converts a JavaScript object to a primitive value.
  * Note: When toPrimitive is called with no hint, then it generally behaves as
@@ -137,19 +159,7 @@ const toPrimitive = function toPrimitive(input, preferredType) {
   const hint = getHint(preferredType, arguments.length > ONE);
   const exoticToPrim = getExoticToPrim(input);
 
-  if (typeof exoticToPrim !== 'undefined') {
-    const result = exoticToPrim.call(input, hint);
-
-    if (isPrimitive(result)) {
-      return result;
-    }
-
-    throw new TypeError('unable to convert exotic object to primitive');
-  }
-
-  const newHint = hint === DEFAULT && (isDate(input) || isSymbol(input)) ? STRING : hint;
-
-  return ordinaryToPrimitive(input, newHint === DEFAULT ? NUMBER : newHint);
+  return typeof exoticToPrim === 'undefined' ? evalPrimitive(input, hint) : evalExotic({exoticToPrim, input, hint});
 };
 
 export default toPrimitive;

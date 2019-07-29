@@ -2,11 +2,11 @@
 {
   "author": "Graham Fairweather",
   "copywrite": "Copyright (c) 2017",
-  "date": "2019-07-27T21:22:09.775Z",
+  "date": "2019-07-29T06:59:19.713Z",
   "describe": "",
   "description": "Converts a JavaScript object to a primitive value.",
   "file": "to-primitive-x.js",
-  "hash": "25a3ca87de762405bc75",
+  "hash": "3057f8be1688f701d5f7",
   "license": "MIT",
   "version": "2.0.26"
 }
@@ -1050,19 +1050,24 @@ var symValueOf = has_symbol_support_x_esm && Symbol.prototype.valueOf;
 var toStringOrder = ['toString', 'valueOf'];
 var toNumberOrder = ['valueOf', 'toString'];
 var orderLength = 2;
+
+var assertHint = function assertHint(hint) {
+  if (typeof hint !== 'string' || hint !== NUMBER && hint !== STRING) {
+    throw new TypeError('hint must be "string" or "number"');
+  }
+
+  return hint;
+};
 /**
  * @param {*} ordinary - The ordinary to convert.
  * @param {*} hint - The hint.
  * @returns {*} - The primitive.
  */
 
-var ordinaryToPrimitive = function _ordinaryToPrimitive(ordinary, hint) {
+
+var to_primitive_x_esm_ordinaryToPrimitive = function ordinaryToPrimitive(ordinary, hint) {
   require_object_coercible_x_esm(ordinary);
-
-  if (typeof hint !== 'string' || hint !== NUMBER && hint !== STRING) {
-    throw new TypeError('hint must be "string" or "number"');
-  }
-
+  assertHint(hint);
   var methodNames = hint === STRING ? toStringOrder : toNumberOrder;
   var method;
   var result;
@@ -1088,7 +1093,7 @@ var ordinaryToPrimitive = function _ordinaryToPrimitive(ordinary, hint) {
  */
 
 
-var getMethod = function _getMethod(object, property) {
+var to_primitive_x_esm_getMethod = function getMethod(object, property) {
   var func = object[property];
 
   if (is_nil_x_esm(func) === false) {
@@ -1134,7 +1139,7 @@ var getHint = function getHint(value, supplied) {
 var to_primitive_x_esm_getExoticToPrim = function getExoticToPrim(value) {
   if (has_symbol_support_x_esm) {
     if (symToPrimitive) {
-      return getMethod(value, symToPrimitive);
+      return to_primitive_x_esm_getMethod(value, symToPrimitive);
     }
 
     if (is_symbol_default()(value)) {
@@ -1143,6 +1148,24 @@ var to_primitive_x_esm_getExoticToPrim = function getExoticToPrim(value) {
   }
 
   return UNDEFINED;
+};
+
+var to_primitive_x_esm_evalExotic = function evalExotic(obj) {
+  var exoticToPrim = obj.exoticToPrim,
+      input = obj.input,
+      hint = obj.hint;
+  var result = exoticToPrim.call(input, hint);
+
+  if (is_primitive_default()(result)) {
+    return result;
+  }
+
+  throw new TypeError('unable to convert exotic object to primitive');
+};
+
+var to_primitive_x_esm_evalPrimitive = function evalPrimitive(input, hint) {
+  var newHint = hint === DEFAULT && (is_date_object_default()(input) || is_symbol_default()(input)) ? STRING : hint;
+  return to_primitive_x_esm_ordinaryToPrimitive(input, newHint === DEFAULT ? NUMBER : newHint);
 };
 /**
  * This method converts a JavaScript object to a primitive value.
@@ -1168,19 +1191,11 @@ var to_primitive_x_esm_toPrimitive = function toPrimitive(input, preferredType) 
 
   var hint = getHint(preferredType, arguments.length > ONE);
   var exoticToPrim = to_primitive_x_esm_getExoticToPrim(input);
-
-  if (typeof exoticToPrim !== 'undefined') {
-    var result = exoticToPrim.call(input, hint);
-
-    if (is_primitive_default()(result)) {
-      return result;
-    }
-
-    throw new TypeError('unable to convert exotic object to primitive');
-  }
-
-  var newHint = hint === DEFAULT && (is_date_object_default()(input) || is_symbol_default()(input)) ? STRING : hint;
-  return ordinaryToPrimitive(input, newHint === DEFAULT ? NUMBER : newHint);
+  return typeof exoticToPrim === 'undefined' ? to_primitive_x_esm_evalPrimitive(input, hint) : to_primitive_x_esm_evalExotic({
+    exoticToPrim: exoticToPrim,
+    input: input,
+    hint: hint
+  });
 };
 
 /* harmony default export */ var to_primitive_x_esm = __webpack_exports__["default"] = (to_primitive_x_esm_toPrimitive);
