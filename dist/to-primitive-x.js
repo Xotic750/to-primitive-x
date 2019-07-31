@@ -2,7 +2,7 @@
 {
   "author": "Graham Fairweather",
   "copywrite": "Copyright (c) 2017",
-  "date": "2019-07-31T17:15:37.197Z",
+  "date": "2019-07-31T19:32:12.762Z",
   "describe": "",
   "description": "Converts a JavaScript object to a primitive value.",
   "file": "to-primitive-x.js",
