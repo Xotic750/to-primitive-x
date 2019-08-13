@@ -2,11 +2,11 @@
 {
   "author": "Graham Fairweather",
   "copywrite": "Copyright (c) 2017",
-  "date": "2019-08-13T01:05:47.040Z",
+  "date": "2019-08-13T08:08:26.513Z",
   "describe": "",
   "description": "Converts a JavaScript object to a primitive value.",
   "file": "to-primitive-x.js",
-  "hash": "47413e4708526ade0b0f",
+  "hash": "f6634683dc9062046db3",
   "license": "MIT",
   "version": "2.0.27"
 }
@@ -24,11 +24,14 @@
   'use strict';
 
   /* eslint-disable-next-line no-var */
-  var magic;
+  var objectPrototype = {}.constructor.prototype;
+  /* eslint-disable-next-line no-var,prefer-destructuring */
+  var defineProperty = objectPrototype.defineProperty;
+  /* eslint-disable-next-line no-var */
+  var $globalThis;
 
   try {
-    /* eslint-disable-next-line no-extend-native */
-    Object.defineProperty(Object.prototype, '__magic__', {
+    defineProperty(objectPrototype, '$$globalThis$$', {
       /* eslint-disable-next-line object-shorthand */
       get: function() {
         return this;
@@ -37,19 +40,14 @@
       configurable: true
     });
 
-    if (typeof __magic__ === 'undefined') {
-      magic = typeof self === 'undefined' ? window : self;
-    } else {
-      /* eslint-disable-next-line no-undef */
-      magic = __magic__;
-    }
+    /* eslint-disable-next-line no-undef */
+    $globalThis = typeof $$globalThis$$ === 'undefined' ? self || window : $$globalThis$$;
 
-    /* eslint-disable-next-line no-underscore-dangle,no-use-extend-native/no-use-extend-native */
-    delete Object.prototype.__magic__;
+    delete objectPrototype.$$globalThis$$;
 
-    return magic;
+    return $globalThis;
   } catch (error) {
-    return window;
+    return self || window;
   }
 }()), function() {
 return /******/ (function(modules) { // webpackBootstrap
