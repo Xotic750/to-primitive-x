@@ -2,11 +2,11 @@
 {
   "author": "Graham Fairweather",
   "copywrite": "Copyright (c) 2017",
-  "date": "2019-08-15T17:44:18.044Z",
+  "date": "2019-08-15T18:35:29.637Z",
   "describe": "",
   "description": "Converts a JavaScript object to a primitive value.",
   "file": "to-primitive-x.js",
-  "hash": "89e85e174c976df37ce3",
+  "hash": "7e6c31ab8f832843ef83",
   "license": "MIT",
   "version": "2.1.0"
 }
@@ -199,28 +199,6 @@ if (hasSymbols) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/*!
- * is-primitive <https://github.com/jonschlinkert/is-primitive>
- *
- * Copyright (c) 2014-present, Jon Schlinkert.
- * Released under the MIT License.
- */
-
-
-
-module.exports = function isPrimitive(val) {
-  if (typeof val === 'object') {
-    return val === null;
-  }
-  return typeof val !== 'function';
-};
-
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
 
 
 var getDay = Date.prototype.getDay;
@@ -240,6 +218,28 @@ var hasToStringTag = typeof Symbol === 'function' && typeof Symbol.toStringTag =
 module.exports = function isDateObject(value) {
 	if (typeof value !== 'object' || value === null) { return false; }
 	return hasToStringTag ? tryDateObject(value) : toStr.call(value) === dateClass;
+};
+
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/*!
+ * is-primitive <https://github.com/jonschlinkert/is-primitive>
+ *
+ * Copyright (c) 2014-present, Jon Schlinkert.
+ * Released under the MIT License.
+ */
+
+
+
+module.exports = function isPrimitive(val) {
+  if (typeof val === 'object') {
+    return val === null;
+  }
+  return typeof val !== 'function';
 };
 
 
@@ -406,12 +406,24 @@ var hasSymbolSupport = attempt_x_esm(function () {
 /* harmony default export */ var has_symbol_support_x_esm = (hasSymbolSupport.threw === false && hasSymbolSupport.value === true);
 
 
-// EXTERNAL MODULE: ./node_modules/is-primitive/index.js
-var is_primitive = __webpack_require__(1);
-var is_primitive_default = /*#__PURE__*/__webpack_require__.n(is_primitive);
+// CONCATENATED MODULE: ./node_modules/is-primitive-x/dist/is-primitive-x.esm.js
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+/**
+ * Returns true if the value is a primitive.
+ *
+ * @param {*} [val] - The value to test.
+ * @returns {boolean} True if a primitive, otherwise false..
+ */
+var isPrimitive = function isPrimitive(val) {
+  return _typeof(val) === 'object' ? val === null : typeof val !== 'function';
+};
+
+/* harmony default export */ var is_primitive_x_esm = (isPrimitive);
+
 
 // EXTERNAL MODULE: ./node_modules/is-date-object/index.js
-var is_date_object = __webpack_require__(2);
+var is_date_object = __webpack_require__(1);
 var is_date_object_default = /*#__PURE__*/__webpack_require__.n(is_date_object);
 
 // CONCATENATED MODULE: ./node_modules/to-boolean-x/dist/to-boolean-x.esm.js
@@ -467,6 +479,10 @@ var toStringTag = function toStringTag(value) {
 /* eslint-disable-next-line compat/compat */
 is_symbol_default()(Symbol.toStringTag));
 
+
+// EXTERNAL MODULE: ./node_modules/is-primitive/index.js
+var is_primitive = __webpack_require__(2);
+var is_primitive_default = /*#__PURE__*/__webpack_require__.n(is_primitive);
 
 // CONCATENATED MODULE: ./node_modules/is-nil-x/dist/is-nil-x.esm.js
 /**
@@ -1104,7 +1120,7 @@ var to_primitive_x_esm_ordinaryToPrimitive = function ordinaryToPrimitive(ordina
     if (is_function_x_esm(method)) {
       result = method.call(ordinary);
 
-      if (is_primitive_default()(result)) {
+      if (is_primitive_x_esm(result)) {
         return result;
       }
     }
@@ -1182,7 +1198,7 @@ var to_primitive_x_esm_evalExotic = function evalExotic(obj) {
       hint = obj.hint;
   var result = exoticToPrim.call(input, hint);
 
-  if (is_primitive_default()(result)) {
+  if (is_primitive_x_esm(result)) {
     return result;
   }
 
@@ -1211,7 +1227,7 @@ var to_primitive_x_esm_evalPrimitive = function evalPrimitive(input, hint) {
 
 
 var to_primitive_x_esm_toPrimitive = function toPrimitive(input, preferredType) {
-  if (is_primitive_default()(input)) {
+  if (is_primitive_x_esm(input)) {
     return input;
   }
 

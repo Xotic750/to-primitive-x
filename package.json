@@ -54,7 +54,7 @@
     "is-date-object": "^1.0.1",
     "is-function-x": "^4.1.0",
     "is-nil-x": "^2.1.0",
-    "is-primitive": "^3.0.1",
+    "is-primitive-x": "^1.0.0",
     "is-symbol": "^1.0.2",
     "require-object-coercible-x": "^2.1.0"
   },

@@ -1,5 +1,5 @@
 import hasSymbols from 'has-symbol-support-x';
-import isPrimitive from 'is-primitive';
+import isPrimitive from 'is-primitive-x';
 import isDate from 'is-date-object';
 import isSymbol from 'is-symbol';
 import isFunction from 'is-function-x';
