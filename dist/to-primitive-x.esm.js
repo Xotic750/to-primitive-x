@@ -5,6 +5,7 @@ import isSymbol from 'is-symbol';
 import isFunction from 'is-function-x';
 import requireObjectCoercible from 'require-object-coercible-x';
 import isNil from 'is-nil-x';
+import call from 'simple-call-x';
 var ZERO = 0;
 var ONE = 1;
 /* eslint-disable-next-line no-void */
@@ -43,14 +44,12 @@ var ordinaryToPrimitive = function ordinaryToPrimitive(ordinary, hint) {
   requireObjectCoercible(ordinary);
   assertHint(hint);
   var methodNames = hint === STRING ? toStringOrder : toNumberOrder;
-  var method;
-  var result;
 
   for (var i = ZERO; i < orderLength; i += ONE) {
-    method = ordinary[methodNames[i]];
+    var method = ordinary[methodNames[i]];
 
     if (isFunction(method)) {
-      result = method.call(ordinary);
+      var result = call(method, ordinary);
 
       if (isPrimitive(result)) {
         return result;
@@ -128,7 +127,7 @@ var evalExotic = function evalExotic(obj) {
   var exoticToPrim = obj.exoticToPrim,
       input = obj.input,
       hint = obj.hint;
-  var result = exoticToPrim.call(input, hint);
+  var result = call(exoticToPrim, input, [hint]);
 
   if (isPrimitive(result)) {
     return result;

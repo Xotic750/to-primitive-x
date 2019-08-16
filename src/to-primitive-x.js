@@ -5,6 +5,7 @@ import isSymbol from 'is-symbol';
 import isFunction from 'is-function-x';
 import requireObjectCoercible from 'require-object-coercible-x';
 import isNil from 'is-nil-x';
+import call from 'simple-call-x';
 
 const ZERO = 0;
 const ONE = 1;
@@ -42,13 +43,11 @@ const ordinaryToPrimitive = function ordinaryToPrimitive(ordinary, hint) {
   assertHint(hint);
 
   const methodNames = hint === STRING ? toStringOrder : toNumberOrder;
-  let method;
-  let result;
   for (let i = ZERO; i < orderLength; i += ONE) {
-    method = ordinary[methodNames[i]];
+    const method = ordinary[methodNames[i]];
 
     if (isFunction(method)) {
-      result = method.call(ordinary);
+      const result = call(method, ordinary);
 
       if (isPrimitive(result)) {
         return result;
@@ -121,7 +120,7 @@ const getExoticToPrim = function getExoticToPrim(value) {
 
 const evalExotic = function evalExotic(obj) {
   const {exoticToPrim, input, hint} = obj;
-  const result = exoticToPrim.call(input, hint);
+  const result = call(exoticToPrim, input, [hint]);
 
   if (isPrimitive(result)) {
     return result;
